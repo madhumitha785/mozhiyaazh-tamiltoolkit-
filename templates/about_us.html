@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mozhiyaazh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        .about-content {
+            padding: 40px;
+            text-align: center;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .project-info {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .feature-btn {
+            margin-top: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="home-page">
+    <div class="container">
+        <div class="home-card">
+            <div class="header">
+                <nav>
+                    <a href="{{ url_for('about_us') }}" class="hover-link">ABOUT US</a>
+                    <a href="{{ url_for('terms_conditions') }}" class="hover-link">TERMS AND CONDITIONS</a>
+                    <a href="{{ url_for('logout') }}" class="hover-link">LOGOUT</a> 
+                </nav>
+            </div>
+            <div class="about-content">
+                <div class="project-info">
+                    <p>Unlock The Power Of Tamil Language With AI! Seamlessly Convert Speech To Text, Text To Lifelike Voice, And Images To Knowledge. Learn, Listen, And Engage – The Smart Way!</p>
+                    
+                    <p><strong>A Final Year Project</strong></p>
+                    
+                    <p><strong>Developed By:</strong> Madhumitha CB & Kowsalya R - III B.Sc CS (AI)</p>
+                    
+                    <p><strong>Guided By:</strong> Ms. S. Shanthi - M.Sc.,M.Phil.,(Ph.D)</p>
+                    
+                    <p><strong>Headed By:</strong> Dr. S. Meera - MCA.,M.Phil.,Ph.D</p>
+                    
+                    <p><strong>Of</strong></p>
+                    
+                    <p>The Department Of Computer Science (Artificial Intelligence)</p>
+                    
+                    <p><strong>In Integration With</strong></p>
+                    
+                    <p>The Department Of Tamil (Self-Finance)</p>
+                    
+                    <p><strong>PSGR KRISHNAMMAL COLLEGE FOR WOMEN, COIMBATORE</strong></p>
+                    
+                    <a href="{{ url_for('home') }}" class="feature-btn">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text - Mozhiyaazh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap" rel="stylesheet">
+    <style>
+       body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to right, #3c1a08, #8b4e25);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #F5DEB3;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 1000px;
+            max-height: 650px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #3c1a08, #8b4e25);
+        }
+
+        h1{ 
+            margin-bottom: 10px;
+            font-size: 3rem;
+        }
+
+        .controls-info {
+            background-color: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .controls-info ul {
+            margin: 0;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .start {
+            background-color: #FF5722;
+        }
+
+        .start:hover {
+            background-color: #FF7043;
+        }
+
+        .pause {
+            background-color: #ffc107;
+            color: rgb(255, 255, 255);
+        }
+
+        .pause:hover {
+            background-color: #FFCA28;
+        }
+
+        .clear {
+            background-color: #4CAF50;
+        }
+
+        .clear:hover {
+            background-color: #66BB6A;
+        }
+
+        .save {
+            background-color: #2196F3;
+        }
+
+        .save:hover {
+            background-color: #42A5F5;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            resize: vertical;
+            color: black;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 10px;
+            color: #FFEB3B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Speech to Text</h1>
+        
+        <div class="controls-info">
+            <ul>
+                <p>CLICK 'START RECORDING' TO BEGIN</p>
+                <p>USE 'PAUSE' WHEN YOU NEED A BREAK</p>
+                <p>CLICK 'RESUME' TO CONTINUE FROM WHERE YOU LEFT OFF</p>
+                <p>CLICK 'STOP RECORDING' TO END THE SESSION</p>
+                <p>'SAVE' TO DOWNLOAD YOUR TRANSCRIPT AS TEXT FILE</p>
+
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <button id="startBtn" class="button start">START RECORDING</button>
+            <button id="pauseBtn" class="button pause">PAUSE</button>
+            <button id="clearBtn" class="button clear">CLEAR ALL</button>
+            <button id="saveBtn" class="button save">SAVE</button>
+        </div>
+
+        <textarea id="transcript" placeholder="Your transcribed text will appear here..."></textarea>
+    </div>
+    <script src="speechToText.js"></script>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="{{ url_for('static', filename='js/speechToText.js') }}"></script>
+</body>

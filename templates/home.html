@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozhiyaazh - A Journey Beyond Words</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        /* Dialog box styles */
+        .dialog-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+            text-align: center; /* Center-aligns the entire dialog content */
+        }
+
+        .dialog-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-brown);
+        }
+
+        .dialog-box p {
+            font-size: 1rem;
+            color: var(--dark-brown);
+            margin-bottom: 10px;
+            text-align: center; /* Ensures all text inside is centered */
+        }
+
+        .dialog-box button {
+            padding: 10px 20px;
+            background-color: var(--dark-brown);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dialog-box button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body class="home-page">
+    <div class="container">
+        <div class="home-card">
+            <div class="header">
+                <nav>
+                    <a href="#" id="aboutUsLink" class="hover-link">ABOUT US</a>
+                    <a href="#" id="termsConditionsLink" class="hover-link">TERMS AND CONDITIONS</a>
+                    <a href="{{ url_for('logout') }}" class="hover-link">LOGOUT</a>
+                </nav>
+            </div>
+            <div class="content">  
+                <div class="features">
+                    <h1 class="title" style="color: black;">Mozhiyaazh</h1>
+                    <p class="tagline" style="color: black;">A Journey Beyond Words</p>
+                    <div class="feature-buttons">
+                        <a href="{{ url_for('speech_to_text') }}" class="feature-btn">SPEECH TO TEXT</a>
+                        <a href="{{ url_for('text_to_speech') }}" class="feature-btn">TEXT TO SPEECH</a>
+                        <a href="{{ url_for('upload_file') }}" class="feature-btn">IMAGE TO TEXT</a>
+                    </div>
+                    <p class="subtitle">சொற்களை தாண்டிய சென்றிடும் தமிழ் அனுபவம்!</p>
+                </div>
+                <div class="illustration">
+                    <img src="{{ url_for('static', filename='Images/home.jpg') }}" alt="Illustration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Dialog Box -->
+    <div id="aboutUsDialog" class="dialog-box">
+        <h2>About Us</h2>
+        <p>Unlock The Power Of Tamil Language With AI! Seamlessly Convert Speech To Text, Text To Lifelike Voice, And Images To Knowledge. Learn, Listen, And Engage – The Smart Way!</p>
+                    
+        <p><strong>A Final Year Project</strong></p>
+                    
+        <p><strong>Developed By:</strong> Madhumitha CB & Kowsalya R - III B.Sc CS (AI)</p>
+                    
+        <p><strong>Guided By:</strong> Ms. S. Shanthi - M.Sc., M.Phil., (Ph.D)</p>
+                    
+        <p><strong>Headed By:</strong> Dr. S. Meera - MCA., M.Phil., Ph.D</p>
+                    
+        <p><strong>Of</strong></p>
+                    
+        <p>The Department Of Computer Science (Artificial Intelligence)</p>
+                    
+        <p><strong>In Integration With</strong></p>
+                    
+        <p>The Department Of Tamil (Self-Finance)</p>
+                    
+        <p><strong>PSGR KRISHNAMMAL COLLEGE FOR WOMEN, COIMBATORE</strong></p>
+                    
+        <button id="closeAboutUs">Close</button>
+    </div>
+
+    <!-- Terms and Conditions Dialog Box -->
+    <div id="termsConditionsDialog" class="dialog-box">
+        <h2>Terms and Conditions</h2>
+        <p>1. Service Provided: Text-To-Speech, Speech-To-Text, Image-To-Text</p>
+        <p>2. Accuracy & Limitations: Results May Not Always Be 100% Accurate.</p>
+        <p>3. Privacy: Data Will Not Be Stored Or Shared</p>
+        <p>4. Usage Rules: Educational Purpose / Any Authorized User</p>
+        <p>5. Contact At: 22bai026@psgrkcw.ac.in, 22bai025@psgrkcw.ac.in</p>
+        <button id="closeTermsConditions">Close</button>
+    </div>
+
+    <!-- Overlay for dialog boxes -->
+    <div id="overlay" class="overlay"></div>
+
+    <script>
+        // JavaScript to handle dialog boxes
+        const aboutUsLink = document.getElementById('aboutUsLink');
+        const termsConditionsLink = document.getElementById('termsConditionsLink');
+        const aboutUsDialog = document.getElementById('aboutUsDialog');
+        const termsConditionsDialog = document.getElementById('termsConditionsDialog');
+        const overlay = document.getElementById('overlay');
+        const closeAboutUs = document.getElementById('closeAboutUs');
+        const closeTermsConditions = document.getElementById('closeTermsConditions');
+
+        // Show About Us dialog
+        aboutUsLink.addEventListener('click', () => {
+            aboutUsDialog.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Show Terms and Conditions dialog
+        termsConditionsLink.addEventListener('click', () => {
+            termsConditionsDialog.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Close About Us dialog
+        closeAboutUs.addEventListener('click', () => {
+            aboutUsDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Close Terms and Conditions dialog
+        closeTermsConditions.addEventListener('click', () => {
+            termsConditionsDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Close dialog when clicking outside
+        overlay.addEventListener('click', () => {
+            aboutUsDialog.style.display = 'none';
+            termsConditionsDialog.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

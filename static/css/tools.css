@@ -1,0 +1,126 @@
+/* Tool Pages Styles */
+body {
+    background: linear-gradient(to bottom, #4c1d00, #522403ed);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.tool-card {
+    max-width: 700px;
+    width: 100%;
+    background: #5a2f11;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin: 50px auto;
+}
+
+.tool-title {
+    font-size: 2rem;
+    color: #f5d7a8;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #c4a484;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 16px;
+    background: white;
+    color: #3b1d0b;
+    border: none;
+    resize: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.controls button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start {
+    background: #ff6600;
+    color: white;
+}
+
+.pause {
+    background: #ffcc00;
+    color: black;
+}
+
+.clear {
+    background: #4caf50;
+    color: white;
+}
+
+.save {
+    background: #4169e1;
+    color: white;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+.speed-control {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1rem;
+    color: #c4a484;
+}
+
+.speed-control input[type="range"] {
+    width: 60%;
+    cursor: pointer;
+}
+
+.speed-control input[type="range"]::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .tool-card {
+        padding: 20px;
+    }
+
+    .tool-title {
+        font-size: 1.6rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

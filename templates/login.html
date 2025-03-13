@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Mozhiyaazh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body class="auth-page">
+    <div class="container">
+        <div class="auth-card">
+            <div class="auth-image">
+                <img src="{{ url_for('static', filename='Images/music.png') }}" alt="Musical Instruments">
+            </div>
+            <div class="auth-form">
+                <h2>LOGIN</h2>
+                <form id="login-form" method="POST">
+                    <div class="form-group">
+                        <label for="email">EMAIL</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="icon email-icon"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" id="password" name="password" required>
+                        <span class="icon lock-icon"></span>
+                    </div>
+                    <button type="submit" class="btn login-btn">LOGIN</button>
+                </form>
+                <div class="auth-links">
+                    <a href="/signup" class="create-account">Create an account</a>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>

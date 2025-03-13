@@ -1,0 +1,178 @@
+/* Home Page Styles */
+.home-page .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    width: 100%;
+    background: linear-gradient(to right, #3c1a08, #8b4e25);
+}
+
+/* Home Card */
+.home-card {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 1000px;
+    height: 600px;
+    background-color: rgb(241, 232, 227);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ensure Text and Image are Side-by-Side */
+.content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left Section (Text & Buttons) */
+.features {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* Right Section (Image) */
+.illustration {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+}
+
+.illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🛠 Move Navigation to Left in a Perfect Straight Line */
+.header {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: auto;
+    z-index: 10; /* Ensure header is on top */
+}
+
+/* Navigation Bar - Force Items in a Straight Line */
+.header nav {
+    display: flex;
+    align-items: center; /* Ensures all items are in the same row */
+    justify-content: flex-start; /* Aligns items to the left */
+    gap: 40px; /* Space between links */
+    font-weight: bold;
+}
+
+/* Navigation Links (Updated with Hover) */
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 0;
+    display: inline-block; /* Ensures items don't wrap */
+    cursor: pointer; /* Makes it act like a button */
+    transition: color 0.3s ease-in-out;
+    position: relative;
+    z-index: 11; /* Ensure links are clickable */
+}
+
+nav a:hover {
+    color: #ff8800; /* Changes color on hover */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Title & Tagline */
+.title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #6d3a14;
+}
+
+/* Feature Buttons */
+.feature-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feature-btn {
+    display: block;
+    padding: 12px 18px;
+    background-color: #8b4e25;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 230px;
+    font-size: 1.1rem;
+}
+
+.feature-btn:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Tamil Subtitle - Move to Bottom of White Box */
+.subtitle {
+    font-size: 0.9rem;
+    color: black;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+/* ✅ Responsive Fixes */
+@media (max-width: 992px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .features, .illustration {
+        width: 100%;
+        text-align: center;
+    }
+
+    .illustration img {
+        height: 320px;
+        object-fit: contain;
+    }
+
+    /* Adjust navigation for smaller screens */
+    .header {
+        top: 10px;
+        left: 10px;
+    }
+
+    .header nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

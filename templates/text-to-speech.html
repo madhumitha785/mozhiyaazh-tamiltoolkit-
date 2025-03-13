@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to right, #3c1a08, #8b4e25);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #F5DEB3;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-height: 650px;
+            max-width: 1000px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #3c1a08, #8b4e25);
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 3rem;
+        }
+        p {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            color: #d2a679;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'Noto Sans Tamil', sans-serif;
+        }
+        .btn-orange { background: #f08030; }
+        .btn-yellow { background: #f0c040; }
+        .btn-green { background: #48c774; }
+        .btn-purple { background: #b48cc3; }
+        .btn-blue { background: #3b82f6; }
+        .speed-control {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #d2a679;
+        }
+        input[type="range"] {
+            width: 50%;
+            accent-color: red;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <div class="container">
+            <h1>Tamil Text-to-Speech</h1>
+            <div id="noTamilWarning" class="warning">
+                தமிழ் குரல் கிடைக்கவில்லை! தயவுசெய்து தமிழ் மொழி தொகுப்பை நிறுவவும்.
+            </div>
+            <textarea id="textInput" placeholder="உங்கள் தமிழ் உரையை இங்கே உள்ளிடவும்..."></textarea>
+            
+            <div class="controls">
+                <button onclick="speak()" class="speak-btn">பேசு</button>
+                <button onclick="pause()" class="pause-btn">இடைநிறுத்து</button>
+                <button onclick="resume()" class="resume-btn">தொடரவும்</button>
+                <button onclick="stop()" class="stop-btn">நிறுத்து</button>
+                <button id="recordButton" class="record-btn">ஒலிப்பதிவு</button>
+            </div>
+    
+            <div class="settings">
+                <select id="voiceSelect"></select>
+                <div class="speed-control">
+                    <label for="rate">வேகம்:</label>
+                    <input type="range" id="rate" min="0.5" max="2" value="1" step="0.1">
+                    <span id="rateValue">1</span>
+                </div>
+            </div>
+    
+            <div id="status">ஒலிப்பதிவு செய்யப்படுகிறது...</div>
+            <div id="downloadLink"></div>
+        </div>
+<style>
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 7.5px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .speak-btn {
+            background: #48bb78;
+            color: white;
+        }
+
+        .pause-btn {
+            background: #4299e1;
+            color: white;
+        }
+
+        .resume-btn {
+            background: #48bb78;
+            color: white;
+        }
+
+        .stop-btn {
+            background: #f56565;
+            color: white;
+        }
+
+        .record-btn {
+            background: #ed64a6;
+            color: white;
+        }
+
+        .record-btn.recording {
+            background: #718096;
+        }
+
+        .settings {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        select, input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #status {
+            display: none;
+            padding: 12px;
+            border-radius: 8px;
+            background: #fed7d7;
+            color: #c53030;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        #downloadLink {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #c6f6d5;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        #downloadLink a {
+            color: #2f855a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #downloadLink a:hover {
+            text-decoration: underline;
+        }
+
+        .warning {
+            background: #fefcbf;
+            color: #975a16;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .speed-control label {
+            min-width: 60px;
+        }
+
+        #rateValue {
+            min-width: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+        speech.lang = 'ta-IN';
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
+        async function setupRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        channelCount: 2
+                    }
+                });
+                
+                mediaRecorder = new MediaRecorder(stream);
+                
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const downloadLink = document.getElementById('downloadLink');
+                    downloadLink.innerHTML = `
+                        <a href="${audioUrl}" download="tamil-speech.mp3">MP3 பதிவிறக்கம் செய்ய இங்கே கிளிக் செய்யவும்</a>
+                    `;
+                    downloadLink.style.display = 'block';
+                };
+            } catch (err) {
+                console.error('Error accessing microphone:', err);
+                alert('Unable to access microphone. Please ensure you have granted permission.');
+            }
+        }
+
+        document.getElementById('recordButton').addEventListener('click', () => {
+            if (!isRecording) {
+                audioChunks = [];
+                mediaRecorder.start();
+                isRecording = true;
+                document.getElementById('recordButton').textContent = 'பதிவை நிறுத்து';
+                document.getElementById('recordButton').classList.add('recording');
+                document.getElementById('status').style.display = 'block';
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                document.getElementById('recordButton').textContent = 'ஒலிப்பதிவு';
+                document.getElementById('recordButton').classList.remove('recording');
+                document.getElementById('status').style.display = 'none';
+            }
+        });
+
+        setupRecording();
+
+        function loadVoices() {
+            const voices = speechSynthesis.getVoices();
+            const voiceSelect = document.getElementById('voiceSelect');
+            const warning = document.getElementById('noTamilWarning');
+            voiceSelect.innerHTML = '';
+            
+            const tamilVoices = voices.filter(voice => 
+                voice.lang.toLowerCase().includes('ta') || 
+                voice.name.toLowerCase().includes('tamil')
+            );
+
+            if (tamilVoices.length === 0) {
+                warning.style.display = 'block';
+                voices.forEach((voice, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = `${voice.name} (${voice.lang})`;
+                    voiceSelect.appendChild(option);
+                });
+            } else {
+                warning.style.display = 'none';
+                tamilVoices.forEach((voice, index) => {
+                    const option = document.createElement('option');
+                    option.value = voices.indexOf(voice);
+                    option.textContent = `${voice.name} (${voice.lang})`;
+                    voiceSelect.appendChild(option);
+                });
+            }
+
+            if (tamilVoices.length > 0) {
+                speech.voice = tamilVoices[0];
+                voiceSelect.value = voices.indexOf(tamilVoices[0]);
+            }
+        }
+
+        speechSynthesis.onvoiceschanged = loadVoices;
+
+        document.getElementById('rate').addEventListener('input', (e) => {
+            const value = e.target.value;
+            document.getElementById('rateValue').textContent = value;
+            speech.rate = value;
+        });
+
+        document.getElementById('voiceSelect').addEventListener('change', (e) => {
+            const voices = speechSynthesis.getVoices();
+            speech.voice = voices[e.target.value];
+        });
+
+        function speak() {
+            speech.text = document.getElementById('textInput').value;
+            speechSynthesis.cancel();
+            speechSynthesis.speak(speech);
+        }
+
+        function pause() {
+            speechSynthesis.pause();
+        }
+
+        function resume() {
+            speechSynthesis.resume();
+        }
+
+        function stop() {
+            speechSynthesis.cancel();
+        }
+    </script>
+</body>
+</html>

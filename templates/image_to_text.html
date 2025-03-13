@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to Text</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family:'Playfair Display', serif;
+    background: linear-gradient(to right, #3c1a08, #8b4e25);
+    color: #f7f6f3;
+    text-align: center;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    max-height: 650px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, hsl(0, 79%, 9%), #714302);
+  }
+  h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+  }
+  p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #eb822c;
+    color: #221500;
+    cursor: pointer;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #192eeb;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #e9966c;
+  }
+  textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #F5E1C0;
+    color: #330000;
+    resize: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>IMAGE TO TEXT</h1>
+  <p>CHOOSE IMAGE FILE AND THE EXTRACTED TEXT WILL BE DISPLAYED IN DIALOGUE BOX</p>
+  
+  <form action="/image-to-text" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit">EXTRACT TEXT</button>
+  </form>
+
+  {% if extracted_text %}
+  <textarea readonly>{{ extracted_text }}</textarea>
+  {% endif %}
+</div>
+</body>
+</html>

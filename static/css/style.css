@@ -1,0 +1,145 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+:root {
+    --primary-color: #8B5A2B;
+    --secondary-color: #f4f2ed;
+    --dark-brown: #3D2314;
+    --light-brown: #BF8D60;
+    --white: #FFFFFF;
+    --black: #000000;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom, hwb(26 0% 70%), #8b5e34);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2, h3, .title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+}
+
+/* Card Styles */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 40px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1000px; /* Adjust width as needed */
+}
+
+/* Landing Page */
+.landing-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 20px; /* Spacing between image and text */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+/* Logo */
+.logo-container {
+    flex: 1;
+    display: top;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-width: 500px;
+    height: auto;
+}
+
+/* Text Content */
+.text-container {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text horizontally */
+    justify-content: center; /* Centers the text vertically */
+    text-align: center; /* Ensures the text is centered */
+}
+
+.title {
+    font-size: 70px; /* Increased size */
+    font-weight: bold;
+    text-transform: uppercase; /* Converts text to uppercase */
+    color: #0e0600;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px; /* Decreased size */
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.cta-container {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 50px;
+    background-color: var(--dark-brown);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-brown);
+}
+
+.explore-btn {
+    background-color: #3e1e02;
+    color: white;
+    padding: 15px 27px;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 9px;
+    transition: 0.3s;
+}
+
+.explore-btn:hover {
+    background-color: #5a2d0c;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozhiyaazh - A Journey Beyond Words</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="landing-page">
+    <div class="container">
+        <div class="card landing-card">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Mozhiyaazh Logo" class="logo">
+            </div>
+            <div class="text-container">
+                <h1 class="title">Mozhiyaazh</h1>
+                <p class="subtitle">சொற்களை தாண்டிய சென்றிடும் தமிழ் அனுபவம்!</p>
+                <div class="cta-container">
+                    <a href="{{ url_for('signup') }}" class="btn explore-btn">EXPLORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

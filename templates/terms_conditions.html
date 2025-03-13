@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Mozhiyaazh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        .terms-content {
+            padding: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .terms-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .terms-list p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .terms-list strong {
+            font-weight: bold;
+        }
+        
+        .feature-btn {
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 230px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="home-page">
+    <div class="container">
+        <div class="home-card">
+            <div class="header">
+                <nav>
+                    <a href="{{ url_for('about_us') }}" class="hover-link">ABOUT US</a>
+                    <a href="{{ url_for('terms_conditions') }}" class="hover-link">TERMS AND CONDITIONS</a>
+                    <a href="{{ url_for('logout') }}" class="hover-link">LOGOUT</a> 
+                </nav>
+            </div>
+            <div class="terms-content">
+                <div class="terms-list">
+                    <p><strong>1. Service Provided:</strong> Text-To-Speech, Speech-To-Text, Image-To-Text</p>
+                    
+                    <p><strong>2. Accuracy & Limitations:</strong> Results May Not Always Be 100% Accurate.</p>
+                    
+                    <p><strong>3. Privacy:</strong> Data Will Not Be Stored Or Shared</p>
+                    
+                    <p><strong>4. Usage Rules:</strong> Educational Purpose /Any Authorized User</p>
+                    
+                    <p><strong>5. Contact At:</strong> 22bai026@psgrkcw.ac.in, 22bai025@psgrkcw.ac.in</p>
+                </div>
+                
+                <a href="{{ url_for('home') }}" class="feature-btn">Return to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
