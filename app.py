@@ -92,4 +92,4 @@ def upload_file():
     return render_template("image_to_text.html", extracted_text=extracted_text)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
